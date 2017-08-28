@@ -8,23 +8,24 @@ define(function (require) {
         return $("[data-id=" + a + "]")
     }
 
-    require("/moocvideo/static/lib/mocoplayer/2.5.2/mocoplayer"),
-        require("/moocvideo/static/page/course/common/jquery.nanoscroller.js"),
-        require("/moocvideo/static/page/course/common/drag.js");
-    var h = require("store"),
-        g = require("/moocvideo/static/page/common/animate-achievement"),
+    require("/moocvideo/static/lib/mocoplayer/2.5.2/mocoplayer");
+    require("/moocvideo/static/page/course/common/jquery.nanoscroller.js");
+    require("/moocvideo/static/page/course/common/drag.js");
 
-        v = require("/moocvideo/static/page/course/common/course_detail_common.js"),
-
-        y = require("/moocvideo/static/page/common/verify-code.js"),
-        w = (require("/moocvideo/static/component/base/util/guideLayer"), null),
-        b = {
+    var h = require("store");
+    var g = require("/moocvideo/static/page/common/animate-achievement");
+    var v = require("/moocvideo/static/page/course/common/course_detail_common.js");
+    var y = require("/moocvideo/static/page/common/verify-code.js");
+    var w = (require("/moocvideo/static/component/base/util/guideLayer"), null);
+    var b = {
         getData: function (a, c, h) {
             var g = this;
             $.ajax({
                 type: "GET",
-               // url: "/course/" + a,
-                data: {cid: course_id}, dataType: "json", success: function (a) {
+                // url: "/course/" + a,
+                data: {cid: course_id},
+                dataType: "json",
+                success: function (a) {
                     if (0 == a.result) {
                         var v = a.data;
                         v.length && (g.bindData(v.slice(0, 2), c[0], h[0]), g.bindData(v.slice(2, 5), c[1], h[1]))
@@ -32,15 +33,20 @@ define(function (require) {
                 }
             })
         },
-            bindData: function (a, c, h) {
+        bindData: function (a, c, h) {
             var g, v, y = "", w = "";
             $(a).each(function (c) {
-                2 == a[c].type ? (g = "//coding.imooc.com/class/" + a[c].id + ".html", v = a[c].pic) : (g = "/learn/" + a[c].id, v = "//img.mukewang.com/" + a[c].pic + "-240-135.jpg"), w += '<li class="l">                            <a href="' + g + '" target="_blank">                                <img src="' + v + '"/>                            </a>                            <a href="' + g + '" target="_blank" class="recom-course-title">                            	' + a[c].name + "                            </a>                        </li>"
-            }), "first-row" == c ? (y = '<ul class="l">	                        ' + w + "	                    </ul>", $(h).before(y)) : (y = '<div class="recom-course-row">            				<ul class="clearfix">	                        	' + w + "		                    </ul>		                </div>", $(h).after(y))
+                2 == a[c].type ? (g = "//coding.imooc.com/class/" + a[c].id + ".html", v = a[c].pic) : (g = "/learn/" + a[c].id, v = "//img.mukewang.com/" + a[c].pic + "-240-135.jpg"),
+                    w += '<li class="l"><a href="' + g + '" target="_blank"><img src="' + v + '"/></a><a href="' + g + '" target="_blank" class="recom-course-title">' + a[c].name + "</a></li>"
+            }),
+                "first-row" == c ? (y = '<ul class="l">' + w + "</ul>",
+                    $(h).before(y)) : (y = '<div class="recom-course-row"><ul class="clearfix">' + w + "</ul></div>",
+                    $(h).after(y))
         }
     };
- //   b.getData("ajaxlastmediarecom", ["first-row", "second-row"], [".first-row .other-oper", ".first-row"]);
+    //   b.getData("ajaxlastmediarecom", ["first-row", "second-row"], [".first-row .other-oper", ".first-row"]);
     var j = {scrollTo: c()};
+
     $(function () {
         function c() {
             if ("number" != typeof continueTime) {
@@ -104,7 +110,7 @@ define(function (require) {
                 return c.mid = pageInfo.mid, w = window.setInterval(a = function () {
                     var a, y;
                     "object" == typeof thePlayer && thePlayer.getCurrentTime && (a = (new Date).getTime(), y = parseInt(a - v) / 1e3, c.time = y - h, c.learn_time = thePlayer.getCurrentTime(), $.ajax({
-                      //  url: "/course/ajaxmediauser/",
+                        //  url: "/course/ajaxmediauser/",
                         data: c,
                         type: "POST",
                         dataType: "json",
@@ -179,7 +185,7 @@ define(function (require) {
                 var j = $.trim(y.getResult(".qa-pop .verify-code"));
                 if (0 == j.length)return void $(".qa-pop .verify-code").trigger("fail", "请输入验证码");
                 w.verify = j, $(".qa-pop .verify-code").trigger("succ"), $.extend(w, postData), w.content = a, w.title = g, v.remote.qa.prev(w), $(".interal-checked").length && (w.frommedia = 1), b.addClass("submit-loading").val("正在发布..."), $.ajax({
-                  //  url: "/course/ajaxsaveques",
+                    //  url: "/course/ajaxsaveques",
                     data: w,
                     type: "post",
                     dataType: "json",
@@ -208,7 +214,7 @@ define(function (require) {
                 if (g > 0 && 3 > g)return void layer.msg("输入不能小于3个字符", 2, -1);
                 if (g > 1e3)return void layer.msg("输入不能超过1000个字", 2, -1);
                 $.extend(c, postData), v.remote.note.prev(c), a.addClass("submit-loading").val("正在保存..."), $.ajax({
-                  //  url: "/course/addnote",
+                    //  url: "/course/addnote",
                     type: "post",
                     dataType: "json",
                     data: c,
@@ -262,10 +268,10 @@ define(function (require) {
                 $(".nano").nanoScroller(j),
                 c.setLT(),
                 $(window).on("resize", function () {
-                setTimeout(function () {
-                    a.resetSize(), $(".nano").nanoScroller(j), c.setLT(), $(window).trigger("scroll")
-                }, 200)
-            });
+                    setTimeout(function () {
+                        a.resetSize(), $(".nano").nanoScroller(j), c.setLT(), $(window).trigger("scroll")
+                    }, 200)
+                });
             var h = $(".section-list");
             $(".chapter").on("click", function () {
                 var c = $(this);

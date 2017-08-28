@@ -1,6 +1,7 @@
 !function (e) {
     var t;
-    t = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : this, t.videojs = e()
+    t = "undefined" != typeof window ? window : "undefined" != typeof global ? global : "undefined" != typeof self ? self : this,
+        t.videojs = e()
 }(function () {
     var e;
     return function e(t, r, n) {
@@ -25,8 +26,7 @@
         for (var o = "function" == typeof require && require, a = 0; a < n.length; a++)i(n[a]);
         return i
     }({
-        1: [function (e, t, r) {
-        }, {}],
+        1: [function (e, t, r) { }, {}],
         2: [function (e, t, r) {
             "use strict";
             var n = e("object-keys"), i = e("foreach"), o = "function" == typeof Symbol && "symbol" == typeof Symbol(), a = Object.prototype.toString, s = function (e) {
