@@ -35,6 +35,7 @@ var mocoplayer = function (e, t) {
             i(n)
         }, a("00000000"), new mocoplayer.init(e, r)
 };
+
 !function (e) {
     var t = e.utils = function () {
     };
@@ -338,19 +339,38 @@ var swfobject = function () {
         return n && typeof encodeURIComponent != j ? encodeURIComponent(e) : e
     }
 
-    var S, x, E, T, k, A, j = "undefined", L = "object", $ = "Shockwave Flash", M = "ShockwaveFlash.ShockwaveFlash", N = "application/x-shockwave-flash", I = "SWFObjectExprInst", P = "onreadystatechange", O = window, F = document, H = navigator, B = !1, D = [r], _ = [], R = [], V = [], W = !1, z = !1, X = !0, J = function () {
-        var e = typeof F.getElementById != j && typeof F.getElementsByTagName != j && typeof F.createElement != j, t = H.userAgent.toLowerCase(), n = H.platform.toLowerCase(), r = n ? /win/.test(n) : /win/.test(t), a = n ? /mac/.test(n) : /mac/.test(t), i = !!/webkit/.test(t) && parseFloat(t.replace(/^.*webkit\/(\d+(\.\d+)?).*$/, "$1")), o = !1, l = [0, 0, 0], s = null;
-        if (typeof H.plugins != j && typeof H.plugins[$] == L)s = H.plugins[$].description, !s || typeof H.mimeTypes != j && H.mimeTypes[N] && !H.mimeTypes[N].enabledPlugin || (B = !0, o = !1, s = s.replace(/^.*\s+(\S+\s+\S+$)/, "$1"), l[0] = parseInt(s.replace(/^(.*)\..*$/, "$1"), 10), l[1] = parseInt(s.replace(/^.*\.(.*)\s.*$/, "$1"), 10), l[2] = /[a-zA-Z]/.test(s) ? parseInt(s.replace(/^.*[a-zA-Z]+(.*)$/, "$1"), 10) : 0); else if (typeof O.ActiveXObject != j)try {
-            var c = new ActiveXObject(M);
-            c && (s = c.GetVariable("$version"), s && (o = !0, s = s.split(" ")[1].split(","), l = [parseInt(s[0], 10), parseInt(s[1], 10), parseInt(s[2], 10)]))
-        } catch (e) {
-        }
-        return {w3: e, pv: l, wk: i, ie: o, win: r, mac: a}
-    }();
+    var S, x, E, T, k, A,
+        j = "undefined",
+        L = "object", $ = "Shockwave Flash",
+        M = "ShockwaveFlash.ShockwaveFlash",
+        N = "application/x-shockwave-flash",
+        I = "SWFObjectExprInst",
+        P = "onreadystatechange",
+        O = window, F = document, H = navigator,
+        B = !1, D = [r], _ = [], R = [], V = [], W = !1, z = !1, X = !0,
+        J = function () {
+            var e = typeof F.getElementById != j && typeof F.getElementsByTagName != j && typeof F.createElement != j,
+                t = H.userAgent.toLowerCase(),
+                n = H.platform.toLowerCase(),
+                r = n ? /win/.test(n) : /win/.test(t),
+                a = n ? /mac/.test(n) : /mac/.test(t),
+                i = !!/webkit/.test(t) && parseFloat(t.replace(/^.*webkit\/(\d+(\.\d+)?).*$/, "$1")),
+                o = !1,
+                l = [0, 0, 0],
+                s = null;
+            if (typeof H.plugins != j && typeof H.plugins[$] == L)s = H.plugins[$].description, !s || typeof H.mimeTypes != j && H.mimeTypes[N] && !H.mimeTypes[N].enabledPlugin || (B = !0, o = !1, s = s.replace(/^.*\s+(\S+\s+\S+$)/, "$1"), l[0] = parseInt(s.replace(/^(.*)\..*$/, "$1"), 10), l[1] = parseInt(s.replace(/^.*\.(.*)\s.*$/, "$1"), 10), l[2] = /[a-zA-Z]/.test(s) ? parseInt(s.replace(/^.*[a-zA-Z]+(.*)$/, "$1"), 10) : 0); else if (typeof O.ActiveXObject != j)try {
+                var c = new ActiveXObject(M);
+                c && (s = c.GetVariable("$version"), s && (o = !0, s = s.split(" ")[1].split(","), l = [parseInt(s[0], 10), parseInt(s[1], 10), parseInt(s[2], 10)]))
+            } catch (e) {
+            }
+            return {w3: e, pv: l, wk: i, ie: o, win: r, mac: a}
+        }();
+
     (function () {
         J.w3 && ((typeof F.readyState != j && "complete" == F.readyState || typeof F.readyState == j && (F.getElementsByTagName("body")[0] || F.body)) && e(), W || (typeof F.addEventListener != j && F.addEventListener("DOMContentLoaded", e, !1), J.ie && J.win && (F.attachEvent(P, function () {
             "complete" == F.readyState && (F.detachEvent(P, arguments.callee), e())
-        }), O == top && !function () {
+        }),
+        O == top && !function () {
             if (!W) {
                 try {
                     F.documentElement.doScroll("left")
@@ -359,28 +379,33 @@ var swfobject = function () {
                 }
                 e()
             }
-        }()), J.wk && !function () {
+        }()),
+        J.wk && !function () {
             if (!W)return /loaded|complete/.test(F.readyState) ? void e() : void setTimeout(arguments.callee, 0)
-        }(), n(e)))
-    })(), function () {
-        J.ie && J.win && window.attachEvent("onunload", function () {
-            for (var e = V.length, t = 0; t < e; t++)V[t][0].detachEvent(V[t][1], V[t][2]);
-            for (var n = R.length, r = 0; r < n; r++)p(R[r]);
-            for (var a in J)J[a] = null;
-            J = null;
-            for (var i in swfobject)swfobject[i] = null;
-            swfobject = null
-        })
-    }();
+        }(),
+            n(e)))
+    })(),
+        function () {
+            J.ie && J.win && window.attachEvent("onunload", function () {
+                for (var e = V.length, t = 0; t < e; t++)V[t][0].detachEvent(V[t][1], V[t][2]);
+                for (var n = R.length, r = 0; r < n; r++)p(R[r]);
+                for (var a in J)J[a] = null;
+                J = null;
+                for (var i in swfobject)swfobject[i] = null;
+                swfobject = null
+            })
+        }();
     return {
         registerObject: function (e, t, n, r) {
             if (J.w3 && e && t) {
                 var a = {};
                 a.id = e, a.swfVersion = t, a.expressInstall = n, a.callbackFn = r, _[_.length] = a, b(e, !1)
             } else r && r({success: !1, id: e})
-        }, getObjectById: function (e) {
+        },
+        getObjectById: function (e) {
             if (J.w3)return o(e)
-        }, embedSWF: function (e, n, r, a, i, o, c, u, d, p) {
+        },
+        embedSWF: function (e, n, r, a, i, o, c, u, d, p) {
             var v = {success: !1, id: n};
             J.w3 && !(J.wk && J.wk < 312) && e && n && r && a && i ? (b(n, !1), t(function () {
                 r += "", a += "";
@@ -399,26 +424,38 @@ var swfobject = function () {
                 }
                 p && p(v)
             })) : p && p(v)
-        }, switchOffAutoHideShow: function () {
+        },
+        switchOffAutoHideShow: function () {
             X = !1
-        }, ua: J, getFlashPlayerVersion: function () {
+        },
+        ua: J,
+        getFlashPlayerVersion: function () {
             return {major: J.pv[0], minor: J.pv[1], release: J.pv[2]}
-        }, hasFlashPlayerVersion: g, createSWF: function (e, t, n) {
+        },
+        hasFlashPlayerVersion: g,
+        createSWF: function (e, t, n) {
             return J.w3 ? f(e, t, n) : void 0
-        }, showExpressInstall: function (e, t, n, r) {
+        },
+        showExpressInstall: function (e, t, n, r) {
             J.w3 && l() && s(e, t, n, r)
-        }, removeSWF: function (e) {
+        },
+        removeSWF: function (e) {
             J.w3 && p(e)
-        }, createCSS: function (e, t, n, r) {
+        },
+        createCSS: function (e, t, n, r) {
             J.w3 && w(e, t, n, r)
-        }, addDomLoadEvent: t, addLoadEvent: n, getQueryParamValue: function (e) {
+        },
+        addDomLoadEvent: t,
+        addLoadEvent: n,
+        getQueryParamValue: function (e) {
             var t = F.location.search || F.location.hash;
             if (t) {
                 if (/\?/.test(t) && (t = t.split("?")[1]), null == e)return C(t);
                 for (var n = t.split("&"), r = 0; r < n.length; r++)if (n[r].substring(0, n[r].indexOf("=")) == e)return C(n[r].substring(n[r].indexOf("=") + 1))
             }
             return ""
-        }, expressInstallCallback: function () {
+        },
+        expressInstallCallback: function () {
             if (z) {
                 var e = m(I);
                 e && S && (e.parentNode.replaceChild(S, e), x && (b(x, !0), J.ie && J.win && (S.style.display = "block")), E && E(T)), z = !1
@@ -426,6 +463,7 @@ var swfobject = function () {
         }
     }
 }();
+
 !function (e, t) {
     e.store = t()
 }(this, function () {
@@ -438,7 +476,8 @@ var swfobject = function () {
     }
 
     var t, n = {}, r = "undefined" != typeof window ? window : global, a = r.document, i = "localStorage", o = "script";
-    if (n.disabled = !1, n.version = "1.3.20", n.set = function (e, t) {
+    if (n.disabled = !1, n.version = "1.3.20",
+            n.set = function (e, t) {
         }, n.get = function (e, t) {
         }, n.has = function (e) {
             return void 0 !== n.get(e)
@@ -460,24 +499,30 @@ var swfobject = function () {
             }
         }, e())t = r[i], n.set = function (e, r) {
         return void 0 === r ? n.remove(e) : (t.setItem(e, n.serialize(r)), r)
-    }, n.get = function (e, r) {
-        var a = n.deserialize(t.getItem(e));
-        return void 0 === a ? r : a
-    }, n.remove = function (e) {
-        t.removeItem(e)
-    }, n.clear = function () {
-        t.clear()
-    }, n.getAll = function () {
-        var e = {};
-        return n.forEach(function (t, n) {
-            e[t] = n
-        }), e
-    }, n.forEach = function (e) {
-        for (var r = 0; r < t.length; r++) {
-            var a = t.key(r);
-            e(a, n.get(a))
-        }
-    }; else if (a && a.documentElement.addBehavior) {
+    },
+        n.get = function (e, r) {
+            var a = n.deserialize(t.getItem(e));
+            return void 0 === a ? r : a
+        },
+        n.remove = function (e) {
+            t.removeItem(e)
+        },
+        n.clear = function () {
+            t.clear()
+        },
+        n.getAll = function () {
+            var e = {};
+            return n.forEach(function (t, n) {
+                e[t] = n
+            }), e
+        },
+        n.forEach = function (e) {
+            for (var r = 0; r < t.length; r++) {
+                var a = t.key(r);
+                e(a, n.get(a))
+            }
+        };
+    else if (a && a.documentElement.addBehavior) {
         var l, s;
         try {
             s = new ActiveXObject("htmlfile"), s.open(), s.write("<" + o + ">document.w=window</" + o + '><iframe src="/favicon.ico"></iframe>'), s.close(), l = s.w.frames[0].document, t = l.createElement("div")
@@ -523,256 +568,276 @@ var swfobject = function () {
         n.disabled = !0
     }
     return n.enabled = !n.disabled, n
-}), !function (e) {
-    var t = {
-        M0x00000: "视频播放器错误",
-        M0x00001: "视频地址错误",
-        M0x00002: "can not found container",
-        M0x00003: "未安装Flash或Flash版本过低，为了更好的播放体验，建议安装最新版chrome或firefox浏览器 <a href='http://www.imooc.com/static/html/browser.html'>下载浏览器</a>",
-        H0x00001: "You aborted the video playback",
-        H0x00003: "A network error caused the video download to fail part-way",
-        H0x00004: "视频解析失败，推荐使用最新版chrome或者firefox浏览器观看视频",
-        H0x00007: "CDN连接失败，请联系慕课网。异常反馈群：230569067",
-        H0x00008: "CDN连接失败，请重新选择CDN线路",
-        H0x10000: "视频播放器错误：HlsError",
-        H0x10001: "LoadError：视频资源加载错误",
-        H0x10002: "ParsingError：视频解析错误",
-        H0x10003: "视频加载失败",
-        H0x10004: "您使用的火狐浏览器没有开启MediaSource。请在浏览器栏输入about:config做如下设置<br>media.mediasource.enabled=true<br>media.mediasource.mp4.enabled=true<br>media.mediasource.whitelist=false",
-        H0x10005: "您的浏览器不支持MediaSourceExtension / MP4 mediasource，建议安装最新版chrome或firefox浏览器 <a href='http://www.imooc.com/static/html/browser.html'>下载浏览器</a>",
-        F0x00007: "CDN连接失败，请联系慕课网。异常反馈群：230569067",
-        F0x10002: "ParsingError：视频解析错误",
-        F0x00001: "参数错误",
-        F0x00002: "没有域名",
-        F0x00008: "CDN连接失败，请重新选择CDN线路"
-    };
-    e.error = function (e, n) {
-        if ("object" == typeof n) {
-            if (1 == n.length && "00x" == n[0].substr(0, 3))return n
-        } else if ("00x" == n.substr(0, 3))return n;
-        var r = $(e);
-        if (r.length) {
-            var a = r.width(), i = r.height(), o = n, l = [];
+}),
+
+    !function (e) {
+        var t = {
+            M0x00000: "视频播放器错误",
+            M0x00001: "视频地址错误",
+            M0x00002: "can not found container",
+            M0x00003: "未安装Flash或Flash版本过低，为了更好的播放体验，建议安装最新版chrome或firefox浏览器 <a href='http://www.imooc.com/static/html/browser.html'>下载浏览器</a>",
+            H0x00001: "You aborted the video playback",
+            H0x00003: "A network error caused the video download to fail part-way",
+            H0x00004: "视频解析失败，推荐使用最新版chrome或者firefox浏览器观看视频",
+            H0x00007: "CDN连接失败，请联系慕课网。异常反馈群：230569067",
+            H0x00008: "CDN连接失败，请重新选择CDN线路",
+            H0x10000: "视频播放器错误：HlsError",
+            H0x10001: "LoadError：视频资源加载错误",
+            H0x10002: "ParsingError：视频解析错误",
+            H0x10003: "视频加载失败",
+            H0x10004: "您使用的火狐浏览器没有开启MediaSource。请在浏览器栏输入about:config做如下设置<br>media.mediasource.enabled=true<br>media.mediasource.mp4.enabled=true<br>media.mediasource.whitelist=false",
+            H0x10005: "您的浏览器不支持MediaSourceExtension / MP4 mediasource，建议安装最新版chrome或firefox浏览器 <a href='http://www.imooc.com/static/html/browser.html'>下载浏览器</a>",
+            F0x00007: "CDN连接失败，请联系慕课网。异常反馈群：230569067",
+            F0x10002: "ParsingError：视频解析错误",
+            F0x00001: "参数错误",
+            F0x00002: "没有域名",
+            F0x00008: "CDN连接失败，请重新选择CDN线路"
+        };
+        e.error = function (e, n) {
             if ("object" == typeof n) {
-                o = n.join(",");
-                for (var s = 0; s < n.length; s++)t[n[s]] && l.push(t[n[s]]);
-                0 == l.length && l.push(t.M0x00000)
-            } else l.push(t[o] || t.M0x00000);
-            $(".mocoplayer-error").length && $(".mocoplayer-error").remove(), $(e).prepend('<div class="mocoplayer-error" style="width:' + a + "px;height:" + i + 'px">\t\t\t\t\t\t\t\t\t<div class="mocoplayer-error-content">\t\t\t\t\t\t\t\t\t\t<span>' + o + "</span>" + l.join("<br>") + '<br><a href="http://www.imooc.com/about/faq" target="_blank">常见问题</a>　<a href="http://www.imooc.com/user/feedback" target="_blank">意见反馈</a>　<a href="javascript:;" class="acdn" onclick="mocoplayer.reHTML.getCdnTestHTML(true);" target="_blank">选择CDN线路</a></div>\t\t\t\t\t\t\t\t</div>')
-        }
-        return n
-    }
-}(mocoplayer), !function (e) {
-    var t = {
-        version: "2.4.3",
-        playbackRates: ["1.0", "1.25", "1.5", "1.75", "2.0"],
-        line: [{name: "线路1", cdn: "aliyun", disabled: !1}, {name: "线路2", cdn: "letv", disabled: !1}, {
-            name: "线路3",
-            cdn: "aliyun1",
-            disabled: !1
-        }, {name: "错误上报", cdn: "error", disabled: !0}],
-        levels: [{id: "A", name: "自动", disabled: !1}, {id: "L", name: "普清", disabled: !1}, {
-            id: "M",
-            name: "高清",
-            disabled: !1
-        }, {id: "H", name: "超清", disabled: !1}],
-        level: 0,
-        cdn: 0,
-        model: {flash: e.utils.flashCanPlay(), html5: e.utils.html5CanPlay()},
-        exe: "m3u8",
-        feesCourse: ["coding.imooc.com", "class.imooc.com"]
-    };
-    e.config = {
-        playerSrc: {
-            html5: e.utils.getScriptPath("mocoplayer.js") + "mocoplayer.html5.js?v=" + t.version,
-            css: e.utils.getScriptPath("mocoplayer.js") + "mocoplayer.css?v=" + t.version,
-            flash: e.utils.getScriptPath("mocoplayer.js") + "mocoplayer.flash.js?v=" + t.version,
-            swf: e.utils.getScriptPath("mocoplayer.js") + "mocoplayer.swf?v=" + t.version,
-            ios: e.utils.getScriptPath("mocoplayer.js") + "mocoplayer.ios.js?v=" + t.version,
-            iosnoplay: e.utils.getScriptPath("mocoplayer.js") + "iosnoplay.jpg?v=" + t.version
-        }, levelToInt: function (e) {
-            for (var n = 0, r = 0; r < t.levels.length; r++)t.levels[r].id == e && (n = r);
+                if (1 == n.length && "00x" == n[0].substr(0, 3))return n
+            } else if ("00x" == n.substr(0, 3))return n;
+            var r = $(e);
+            if (r.length) {
+                var a = r.width(), i = r.height(), o = n, l = [];
+                if ("object" == typeof n) {
+                    o = n.join(",");
+                    for (var s = 0; s < n.length; s++)t[n[s]] && l.push(t[n[s]]);
+                    0 == l.length && l.push(t.M0x00000)
+                } else l.push(t[o] || t.M0x00000);
+                $(".mocoplayer-error").length && $(".mocoplayer-error").remove(), $(e).prepend('<div class="mocoplayer-error" style="width:' + a + "px;height:" + i + 'px">\t\t\t\t\t\t\t\t\t<div class="mocoplayer-error-content">\t\t\t\t\t\t\t\t\t\t<span>' + o + "</span>" + l.join("<br>") + '<br><a href="http://www.imooc.com/about/faq" target="_blank">常见问题</a>　<a href="http://www.imooc.com/user/feedback" target="_blank">意见反馈</a>　<a href="javascript:;" class="acdn" onclick="mocoplayer.reHTML.getCdnTestHTML(true);" target="_blank">选择CDN线路</a></div>\t\t\t\t\t\t\t\t</div>')
+            }
             return n
-        }, levelToString: function (e) {
-            var n = "A";
-            return t.levels[e] && (n = t.levels[e].id), n
-        }, get: function () {
-            var e = store.get("mocoplayer_conf") || {level: 0};
-            if (e.level && (isNaN(e.level) || e.level > 3 || e.level < 0 ? e.level = 1 : e.level = parseInt(e.level)), e.cdn && (isNaN(e.cdn) || e.cdn > t.line.length - 1 || e.cdn < 0 ? e.cdn = 0 : e.cdn = parseInt(e.cdn)), e.primary && "html5" != e.primary && "flash" != e.primary && (e.primary = "html5"), e.rate) {
-                for (var n = 0, r = 0; r < t.playbackRates.length; r++)e.rate == t.playbackRates[r] && (n = 1);
-                n || (e.rate = 1)
-            }
-            return $.extend(t, e)
-        }, set: function (e, t) {
-            var n = store.get("mocoplayer_conf") || {};
-            n[e] = t, store.set("mocoplayer_conf", n)
-        }, setLevelsState: function (e) {
-            for (var n = t.levels, r = 0; r < n.length; r++)n[r].id == e && (t.levels[r].disabled = !0)
         }
-    }
-}(mocoplayer), !function (e) {
-    e.reHTML = {
-        getCdnTestHTML: function (t) {
-            var n = store.get("mocoplayer_conf") || {}, r = "";
-            if (n.ManualSwitchCdn)var r = n.cdn || 0;
-            var a = ['<div class="switch-cdn-line-wrap" id="switchCdnLineWrap">', '<iframe class="report-wrap" src="/mocoplayer/report2.html?cdn=' + r + '"></iframe>', "</div>"].join("");
-            return t ? $("#switchCdnLineWrap")[0] ? ($("#switchCdnLineWrap").remove(), !1) : void $(e.container).css("position", "relative").append(a) : a
-        }, switchHtmlPlayerBut: function (t) {
-            if (t)return void $(".switch-html-button").remove();
-            var n = function () {
-                var t = $(e.container).height() / 2 + 60;
-                $(".switch-html-button").css("top", t)
-            }, r = '<div class="switch-html-button">切换到html播放器</div>';
-            $(e.container).prepend(r), n(), $(window).on("resize", n), $(".switch-html-button").on("click", function () {
-                e.config.set("primary", "html5"), window.location.reload(!0)
-            })
-        }
-    }
-}(mocoplayer), !function (e) {
-    e.init = function (t, n) {
-        var r = this, a = 0;
-        this.container = t, e.container = t;
-        var i = e.utils.getCookie("mocoplayer_cdn");
-        i && ("auto" == i ? e.config.set("ManualSwitchCdn", 0) : (e.config.set("cdn", i), e.config.set("ManualSwitchCdn", 1)), e.config.set("cdntest", 1), e.utils.setCookie("mocoplayer_cdn", "0", -1)), e.utils.isFeesCourse() || e.config.setLevelsState("H");
-        var o = e.config.get();
-        $.extend(n, o), "jpg" == n.exe && (n.url.indexOf("?") != -1 ? n.url = n.url + "&type=jpg" : n.url = n.url + "?type=jpg"), o.ManualSwitchCdn && (n.lockCdnChange = 1), $(document).on("keydown", function (e) {
-            var t = $(e.target);
-            if (!t.is("textarea") && !t.is("input") && !t.is("object")) {
-                if (r.getPlayState && "complete" == r.getPlayState())return;
-                switch (e.keyCode) {
-                    case 32:
-                        r.getPlayState && ("playing" == r.getPlayState() ? r.pause() : r.play(), e.preventDefault());
-                        break;
-                    case 37:
-                        if (r.getCurrentTime) {
-                            var n = r.getCurrentTime() || 0;
-                            n -= 5, n >= 0 && r.seek(n)
-                        }
-                        break;
-                    case 39:
-                        if (r.getCurrentTime) {
-                            var n = r.getCurrentTime() || 0;
-                            n += 5, r.getDuration && n > r.getDuration() && (n = r.getDuration() - .1), r.seek(n)
-                        }
-                        break;
-                    case 70:
-                        r.fullscreen && r.fullscreen();
-                        break;
-                    case 38:
-                        r.isFullscreen && r.isFullscreen() && r.volume(.1);
-                        break;
-                    case 40:
-                        r.isFullscreen && r.isFullscreen() && r.volume(-.1)
-                }
-            }
-        });
-        var l = function () {
-            if ("" == n.url)return void n.events.onError("M0x00001");
-            if (!$(t).length)return void n.events.onError("M0x00002");
-            if (!n.model.html5 || "flash" == n.primary && n.model.flash) {
-                if (!n.model.flash)return n.events.onError("M0x00003"), !1;
-                e.flash ? u() : e.utils.scriptLoader(e.config.playerSrc.flash, function () {
-                    u()
-                })
-            } else e.html5 ? s() : e.utils.scriptLoader(e.config.playerSrc.html5, function () {
-                s()
-            })
-        }, s = function () {
-            var i = e.html5.init.call(r, t, n);
-            i.ready(function () {
-                n.events.onReady.call(r)
-            }), i.playbackRate(n.rate), r.onPlay = function () {
-                a = 0, $(".mocoplayer-error").length && $(".mocoplayer-error").remove()
-            }, r.onComplete = function () {
-                i.isFullscreen() && i.exitFullscreen(), a = 1, n.events.onComplete.call(r)
-            }, r.isFullscreen = function () {
-                return i.isFullscreen()
-            }, r.onRateChange = function () {
-                e.config.set("rate", i.playbackRate())
-            }, r.volumeChange = function () {
-                n.volume = i.volume(), e.config.set("volume", n.volume)
-            }, r.volume = function (e) {
-                var t = Math.round(10 * i.volume()) / 10 + e;
-                t < 0 && (t = 0), t > 1 && (t = 1), i.setVolume(t)
-            }, r.getDuration = function () {
-                return i.duration()
-            }, r.play = function () {
-                i.play()
-            }, r.pause = function () {
-                i.pause()
-            }, r.fullscreen = function () {
-                i.requestFullscreen()
-            }, r.seek = function (e) {
-                i.currentTime(e), i.play()
-            }, r.getCurrentTime = function () {
-                return i.currentTime()
-            }, r.getPlayType = function () {
-                return "html5"
-            }, r.getPlayRate = function () {
-                return i.playbackRate()
-            }, r.getPlayState = r.getState = function () {
-                var e = i.paused() ? "paused" : "playing";
-                return a && (e = "complete"), e
-            }, r.destroy = function () {
-                i.destroy(), $(t).html("")
-            }
-        }, c = function () {
-            e.ios.init.call(r, t, n)
-        }, u = function () {
-            var i = e.flash.init.call(r, t, n);
-            r.play = function () {
-                i.play2()
-            }, r.pause = function () {
-                i.pause()
-            }, r.seek = function (e) {
-                i.seek(e)
-            }, r.getCurrentTime = function () {
-                return i.getCurrentTime()
-            }, r.getPlayType = function () {
-                return "flash"
-            }, r.getPlayState = r.getState = function () {
-                var e = i.getState();
-                return a && (e = "complete"), e
-            }, r.onPlay = function () {
-                a = 0, $(".mocoplayer-error").length && $(".mocoplayer-error").remove(), e.reHTML.switchHtmlPlayerBut(!0)
-            }, r.onComplete = function () {
-                i.blur(), a = 1, n.events.onComplete.call(r)
-            }, r.volumeChange = function (t) {
-                n.volume = t, e.config.set("volume", t)
-            }, r.destroy = function () {
-                i.destroy(), $(t).html("")
-            }
+    }(mocoplayer),
+
+    !function (e) {
+        var t = {
+            version: "2.4.3",
+            playbackRates: ["1.0", "1.25", "1.5", "1.75", "2.0"],
+            line: [{name: "线路1", cdn: "aliyun", disabled: !1}, {name: "线路2", cdn: "letv", disabled: !1}, {
+                name: "线路3",
+                cdn: "aliyun1",
+                disabled: !1
+            }, {name: "错误上报", cdn: "error", disabled: !0}],
+            levels: [{id: "A", name: "自动", disabled: !1}, {id: "L", name: "普清", disabled: !1}, {
+                id: "M",
+                name: "高清",
+                disabled: !1
+            }, {id: "H", name: "超清", disabled: !1}],
+            level: 0,
+            cdn: 0,
+            model: {flash: e.utils.flashCanPlay(), html5: e.utils.html5CanPlay()},
+            exe: "m3u8",
+            feesCourse: ["coding.imooc.com", "class.imooc.com"]
         };
-        window.switchPlayer = function (t) {
-            e.config.set("cdn", t.cdn), e.config.set("level", t.level), e.config.set("primary", t.primary), "flash" == t.primary ? r.switchPlayer("flash", t) : window.hdChange(t.level)
-        }, this.switchPlayer = function (t, a) {
-            var i = r.getCurrentTime();
-            n.primary = t, n.cdn = a.cdn, n.rate = e.config.get().rate, n.currentTime = i, n.level = a.level, a.lockCdnChange && (n.lockCdnChange = a.lockCdnChange), r.pause(), r.destroy(), l()
-        }, this.showTip = function () {
-            var t = e.config.get();
-            if (!$(".js-mocoplayer-tip").length && !t.cdntest) {
-                n.events.onError("00x10002");
-                var r = $(this.container);
-                "static" == r.css("position") && r.css("position", "relative"), r.append('<div class="mocoplayer-tip js-mocoplayer-tip">系统检测到您的网速缓慢，点击<a href="javascript:;" target="_blank">线路检测</a>，自动选择合适线路</div>'), $(".js-mocoplayer-tip a").on("click", function () {
-                    e.reHTML.getCdnTestHTML(!0)
+        e.config = {
+            playerSrc: {
+                html5: e.utils.getScriptPath("mocoplayer.js") + "mocoplayer.html5.js?v=" + t.version,
+                css: e.utils.getScriptPath("mocoplayer.js") + "mocoplayer.css?v=" + t.version,
+                flash: e.utils.getScriptPath("mocoplayer.js") + "mocoplayer.flash.js?v=" + t.version,
+                swf: e.utils.getScriptPath("mocoplayer.js") + "mocoplayer.swf?v=" + t.version,
+                ios: e.utils.getScriptPath("mocoplayer.js") + "mocoplayer.ios.js?v=" + t.version,
+                iosnoplay: e.utils.getScriptPath("mocoplayer.js") + "iosnoplay.jpg?v=" + t.version
+            },
+            levelToInt: function (e) {
+                for (var n = 0, r = 0; r < t.levels.length; r++)t.levels[r].id == e && (n = r);
+                return n
+            },
+            levelToString: function (e) {
+                var n = "A";
+                return t.levels[e] && (n = t.levels[e].id), n
+            },
+            get: function () {
+                var e = store.get("mocoplayer_conf") || {level: 0};
+                if (e.level && (isNaN(e.level) || e.level > 3 || e.level < 0 ? e.level = 1 : e.level = parseInt(e.level)), e.cdn && (isNaN(e.cdn) || e.cdn > t.line.length - 1 || e.cdn < 0 ? e.cdn = 0 : e.cdn = parseInt(e.cdn)), e.primary && "html5" != e.primary && "flash" != e.primary && (e.primary = "html5"), e.rate) {
+                    for (var n = 0, r = 0; r < t.playbackRates.length; r++)e.rate == t.playbackRates[r] && (n = 1);
+                    n || (e.rate = 1)
+                }
+                return $.extend(t, e)
+            },
+            set: function (e, t) {
+                var n = store.get("mocoplayer_conf") || {};
+                n[e] = t, store.set("mocoplayer_conf", n)
+            },
+            setLevelsState: function (e) {
+                for (var n = t.levels, r = 0; r < n.length; r++)n[r].id == e && (t.levels[r].disabled = !0)
+            }
+        }
+    }(mocoplayer),
+    !function (e) {
+        e.reHTML = {
+            getCdnTestHTML: function (t) {
+                var n = store.get("mocoplayer_conf") || {}, r = "";
+                if (n.ManualSwitchCdn)var r = n.cdn || 0;
+                var a = ['<div class="switch-cdn-line-wrap" id="switchCdnLineWrap">', '<iframe class="report-wrap" src="/mocoplayer/report2.html?cdn=' + r + '"></iframe>', "</div>"].join("");
+                return t ? $("#switchCdnLineWrap")[0] ? ($("#switchCdnLineWrap").remove(), !1) : void $(e.container).css("position", "relative").append(a) : a
+            },
+            switchHtmlPlayerBut: function (t) {
+                if (t)return void $(".switch-html-button").remove();
+                var n = function () {
+                    var t = $(e.container).height() / 2 + 60;
+                    $(".switch-html-button").css("top", t)
+                }, r = '<div class="switch-html-button">切换到html播放器</div>';
+                $(e.container).prepend(r), n(), $(window).on("resize", n), $(".switch-html-button").on("click", function () {
+                    e.config.set("primary", "html5"), window.location.reload(!0)
                 })
             }
-        };
-        var f = function () {
-            if (n.model.html5) {
-                if (!e.utils.hlsSupported()) {
-                    if (!n.model.flash)return e.utils.isIOS() ? void e.utils.scriptLoader(e.config.playerSrc.ios, function () {
-                        c()
-                    }) : void(navigator.userAgent.toLowerCase().indexOf("firefox") !== -1 ? n.events.onError("H0x10004") : n.events.onError("H0x10005"));
-                    n.primary = "flash", n.model.html5 = !1, navigator.userAgent.toLowerCase().indexOf("firefox") !== -1 ? n.events.onError("00x10004") : n.events.onError("00x10005")
+        }
+    }(mocoplayer),
+    !function (e) {
+        e.init = function (t, n) {
+            var r = this, a = 0;
+            this.container = t, e.container = t;
+            var i = e.utils.getCookie("mocoplayer_cdn");
+            i && ("auto" == i ? e.config.set("ManualSwitchCdn", 0) : (e.config.set("cdn", i), e.config.set("ManualSwitchCdn", 1)), e.config.set("cdntest", 1), e.utils.setCookie("mocoplayer_cdn", "0", -1)), e.utils.isFeesCourse() || e.config.setLevelsState("H");
+            var o = e.config.get();
+            $.extend(n, o),
+            "jpg" == n.exe && (n.url.indexOf("?") != -1 ? n.url = n.url + "&type=jpg" : n.url = n.url + "?type=jpg"),
+            o.ManualSwitchCdn && (n.lockCdnChange = 1),
+                $(document).on("keydown", function (e) {
+                    var t = $(e.target);
+                    if (!t.is("textarea") && !t.is("input") && !t.is("object")) {
+                        if (r.getPlayState && "complete" == r.getPlayState())return;
+                        switch (e.keyCode) {
+                            case 32:
+                                r.getPlayState && ("playing" == r.getPlayState() ? r.pause() : r.play(), e.preventDefault());
+                                break;
+                            case 37:
+                                if (r.getCurrentTime) {
+                                    var n = r.getCurrentTime() || 0;
+                                    n -= 5, n >= 0 && r.seek(n)
+                                }
+                                break;
+                            case 39:
+                                if (r.getCurrentTime) {
+                                    var n = r.getCurrentTime() || 0;
+                                    n += 5, r.getDuration && n > r.getDuration() && (n = r.getDuration() - .1), r.seek(n)
+                                }
+                                break;
+                            case 70:
+                                r.fullscreen && r.fullscreen();
+                                break;
+                            case 38:
+                                r.isFullscreen && r.isFullscreen() && r.volume(.1);
+                                break;
+                            case 40:
+                                r.isFullscreen && r.isFullscreen() && r.volume(-.1)
+                        }
+                    }
+                });
+            var l = function () {
+                    if ("" == n.url)return void n.events.onError("M0x00001");
+                    if (!$(t).length)return void n.events.onError("M0x00002");
+                    if (!n.model.html5 || "flash" == n.primary && n.model.flash) {
+                        if (!n.model.flash)return n.events.onError("M0x00003"), !1;
+                        e.flash ? u() : e.utils.scriptLoader(e.config.playerSrc.flash, function () {
+                            u()
+                        })
+                    } else e.html5 ? s() : e.utils.scriptLoader(e.config.playerSrc.html5, function () {
+                        s()
+                    })
+                },
+                s = function () {
+                    var i = e.html5.init.call(r, t, n);
+                    i.ready(function () {
+                        n.events.onReady.call(r)
+                    }), i.playbackRate(n.rate), r.onPlay = function () {
+                        a = 0, $(".mocoplayer-error").length && $(".mocoplayer-error").remove()
+                    }, r.onComplete = function () {
+                        i.isFullscreen() && i.exitFullscreen(), a = 1, n.events.onComplete.call(r)
+                    }, r.isFullscreen = function () {
+                        return i.isFullscreen()
+                    }, r.onRateChange = function () {
+                        e.config.set("rate", i.playbackRate())
+                    }, r.volumeChange = function () {
+                        n.volume = i.volume(), e.config.set("volume", n.volume)
+                    }, r.volume = function (e) {
+                        var t = Math.round(10 * i.volume()) / 10 + e;
+                        t < 0 && (t = 0), t > 1 && (t = 1), i.setVolume(t)
+                    }, r.getDuration = function () {
+                        return i.duration()
+                    }, r.play = function () {
+                        i.play()
+                    }, r.pause = function () {
+                        i.pause()
+                    }, r.fullscreen = function () {
+                        i.requestFullscreen()
+                    }, r.seek = function (e) {
+                        i.currentTime(e), i.play()
+                    }, r.getCurrentTime = function () {
+                        return i.currentTime()
+                    }, r.getPlayType = function () {
+                        return "html5"
+                    }, r.getPlayRate = function () {
+                        return i.playbackRate()
+                    }, r.getPlayState = r.getState = function () {
+                        var e = i.paused() ? "paused" : "playing";
+                        return a && (e = "complete"), e
+                    }, r.destroy = function () {
+                        i.destroy(), $(t).html("")
+                    }
+                },
+                c = function () {
+                    e.ios.init.call(r, t, n)
+                },
+                u = function () {
+                    var i = e.flash.init.call(r, t, n);
+                    r.play = function () {
+                        i.play2()
+                    }, r.pause = function () {
+                        i.pause()
+                    }, r.seek = function (e) {
+                        i.seek(e)
+                    }, r.getCurrentTime = function () {
+                        return i.getCurrentTime()
+                    }, r.getPlayType = function () {
+                        return "flash"
+                    }, r.getPlayState = r.getState = function () {
+                        var e = i.getState();
+                        return a && (e = "complete"), e
+                    }, r.onPlay = function () {
+                        a = 0, $(".mocoplayer-error").length && $(".mocoplayer-error").remove(), e.reHTML.switchHtmlPlayerBut(!0)
+                    }, r.onComplete = function () {
+                        i.blur(), a = 1, n.events.onComplete.call(r)
+                    }, r.volumeChange = function (t) {
+                        n.volume = t, e.config.set("volume", t)
+                    }, r.destroy = function () {
+                        i.destroy(), $(t).html("")
+                    }
+                };
+            window.switchPlayer = function (t) {
+                e.config.set("cdn", t.cdn), e.config.set("level", t.level), e.config.set("primary", t.primary), "flash" == t.primary ? r.switchPlayer("flash", t) : window.hdChange(t.level)
+            },
+                this.switchPlayer = function (t, a) {
+                    var i = r.getCurrentTime();
+                    n.primary = t, n.cdn = a.cdn, n.rate = e.config.get().rate, n.currentTime = i, n.level = a.level, a.lockCdnChange && (n.lockCdnChange = a.lockCdnChange), r.pause(), r.destroy(), l()
+                },
+                this.showTip = function () {
+                    var t = e.config.get();
+                    if (!$(".js-mocoplayer-tip").length && !t.cdntest) {
+                        n.events.onError("00x10002");
+                        var r = $(this.container);
+                        "static" == r.css("position") && r.css("position", "relative"), r.append('<div class="mocoplayer-tip js-mocoplayer-tip">系统检测到您的网速缓慢，点击<a href="javascript:;" target="_blank">线路检测</a>，自动选择合适线路</div>'), $(".js-mocoplayer-tip a").on("click", function () {
+                            e.reHTML.getCdnTestHTML(!0)
+                        })
+                    }
+                };
+            var f = function () {
+                if (n.model.html5) {
+                    if (!e.utils.hlsSupported()) {
+                        if (!n.model.flash)return e.utils.isIOS() ? void e.utils.scriptLoader(e.config.playerSrc.ios, function () {
+                            c()
+                        }) : void(navigator.userAgent.toLowerCase().indexOf("firefox") !== -1 ? n.events.onError("H0x10004") : n.events.onError("H0x10005"));
+                        n.primary = "flash", n.model.html5 = !1, navigator.userAgent.toLowerCase().indexOf("firefox") !== -1 ? n.events.onError("00x10004") : n.events.onError("00x10005")
+                    }
+                    e.utils.isSafari() && n.currentTime < .5 && (n.currentTime = .5)
                 }
-                e.utils.isSafari() && n.currentTime < .5 && (n.currentTime = .5)
-            }
-            var r = $(t).get(0).id + "-mocoplayer";
-            t.html('<div id="' + r + '" class="mocoplayer" />'), t = "#" + r, l()
-        };
-        e.utils.styleLoader(e.config.playerSrc.css, function () {
-            f()
-        })
-    }
-}(mocoplayer);
+                var r = $(t).get(0).id + "-mocoplayer";
+                t.html('<div id="' + r + '" class="mocoplayer" />'), t = "#" + r, l()
+            };
+            e.utils.styleLoader(e.config.playerSrc.css, function () {
+                f()
+            })
+        }
+    }(mocoplayer);
