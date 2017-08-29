@@ -3,7 +3,6 @@ seajs.config({
     alias: {
         'seajs-text' : '/moocvideo/static/sea-modules/seajs/seajs-text/1.0.3/seajs-text',
         'seajs-combo': '/moocvideo/static/sea-modules/seajs/seajs-combo/1.0.0/seajs-combo',
-        //'jquery'     : '/static/sea-modules/jquery/jquery/1.9.1/jquery',
         'store'      : '/moocvideo/static/sea-modules/gallery/store/1.3.14/store',
         'underscore' : '/moocvideo/static/sea-modules/gallery/underscore/1.3.14/underscore',
         'moment'     : '/moocvideo/static/sea-modules/gallery/moment/2.3.1/moment',

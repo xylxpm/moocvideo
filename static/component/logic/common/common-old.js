@@ -1,13 +1,14 @@
 define(function (require) {
     function a() {
-        //OP_CONFIG.userInfo && $.ajax({
-        //    url: "/u/loading", dataType: "json", success: function (a) {
-        //        if (0 == a.result) {
-        //            var c = window.location.href.indexOf("notices"), h = window.location.href.indexOf("messages");
-        //            a.data.remind > 0 ? (_not_unread = 1, $(".msg_remind").show(), (-1 != c || -1 != h) && (a.data.remind > 99 ? $("#not_new").find(".not-num").html("99+").show() : $("#not_new").find(".not-num").html("(" + a.data.remind + ")").show())) : (_not_unread = 0, _msg_unread || $(".msg_remind").hide())
-        //        }
-        //    }
-        //})
+        OP_CONFIG.userInfo && $.ajax({
+           // url: "/u/loading",
+            dataType: "json", success: function (a) {
+                if (0 == a.result) {
+                    var c = window.location.href.indexOf("notices"), h = window.location.href.indexOf("messages");
+                    a.data.remind > 0 ? (_not_unread = 1, $(".msg_remind").show(), (-1 != c || -1 != h) && (a.data.remind > 99 ? $("#not_new").find(".not-num").html("99+").show() : $("#not_new").find(".not-num").html("(" + a.data.remind + ")").show())) : (_not_unread = 0, _msg_unread || $(".msg_remind").hide())
+                }
+            }
+        })
     }
 
     function c() {
