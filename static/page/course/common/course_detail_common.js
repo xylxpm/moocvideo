@@ -1,22 +1,18 @@
-//define(function (require, exports, module) {});
-
-
 define(function (require, exports, module) {
     function Store(a) {
         this.name = a, this.data = null
     }
 
-    require("common"),
-        require("/moocvideo/static/lib/layer/1.6.0/layer.min.js"),
-        require("/moocvideo/static/lib/jquery/plugin/jquery.scrollbar"),
-        require("/moocvideo/static/css/jquery.scrollbar.css"),
-        require("/moocvideo/static/component/base/placeholder/placeholder.js"),
-        require("/moocvideo/static/page/course/common/autocomplete.js");
-    var wikiSearch = require("/moocvideo/static/page/course/common/wiki-search.js"),
-        verifyCode = require("/moocvideo/static/page/common/verify-code.js");
-    require("/moocvideo/static/page/course/common/course_note.js"),
-        require("/moocvideo/static/page/course/common/ajax-right-recommend.js");
-
+    require("common");
+    require("/moocvideo/static/lib/layer/1.6.0/layer.min.js");
+    require("/moocvideo/static/lib/jquery/plugin/jquery.scrollbar");
+    require("/moocvideo/static/css/jquery.scrollbar.css");
+    require("/moocvideo/static/component/base/placeholder/placeholder.js");
+    require("/moocvideo/static/page/course/common/autocomplete.js");
+    require("/moocvideo/static/page/course/common/course_note.js");
+    require("/moocvideo/static/page/course/common/ajax-right-recommend.js");
+    var wikiSearch = require("/moocvideo/static/page/course/common/wiki-search.js");
+    var verifyCode = require("/moocvideo/static/page/common/verify-code.js");
     var store = require("store");
 
     Store.prototype = {
@@ -50,7 +46,7 @@ define(function (require, exports, module) {
                 v.addClass("submit-loading").val("发布中...");
                 var w = {verify: c, content: h, mid: pageInfo.mid};
                 a && (w.checked = 1), $.ajax({
-                  //  url: "/course/docomment",
+                    //  url: "/course/docomment",
                     type: "post",
                     dataType: "json",
                     data: w,
@@ -76,32 +72,32 @@ define(function (require, exports, module) {
             a.init()
         })), $(".detaillist").perfectScrollbar({wheelSpeed: 20, wheelPropagation: !1});
         var GetListData = {
-            //pl: require("/moocvideo/static/page/course/common/ajax-pl-list.js")({
-            //    container: $("#plLoadListData"),
-            //    params: {mid: pageInfo.mid}
-            //}),
-            //mate: require("/moocvideo/static/page/course/common/ajax-otherscode-list.js")({
-            //    container: $("#mateLoadListData"),
-            //    params: {mid: pageInfo.mid}
-            //}),
-            //qa: require("/moocvideo/static/page/course/common/ajax-discuss-list.js")({
-            //    container: $("#qaLoadListData"),
-            //    params: {mid: pageInfo.mid}
-            //}),
-            //note: require("/moocvideo/static/page/course/common/ajax-note-list.js")({
-            //    container: $("#noteLoadListData"),
-            //    params: {mid: pageInfo.mid},
-            //    def: {media_id: pageInfo.mid, mediaType: "video"}
-            //}),
-            //wiki: require("/moocvideo/static/page/course/common/ajax-wiki-list.js")({
-            //    container: $("#wikiLoadListData"),
-            //    params: {mid: pageInfo.mid}
-            //})
-        },
+                //pl: require("/moocvideo/static/page/course/common/ajax-pl-list.js")({
+                //    container: $("#plLoadListData"),
+                //    params: {mid: pageInfo.mid}
+                //}),
+                //mate: require("/moocvideo/static/page/course/common/ajax-otherscode-list.js")({
+                //    container: $("#mateLoadListData"),
+                //    params: {mid: pageInfo.mid}
+                //}),
+                //qa: require("/moocvideo/static/page/course/common/ajax-discuss-list.js")({
+                //    container: $("#qaLoadListData"),
+                //    params: {mid: pageInfo.mid}
+                //}),
+                //note: require("/moocvideo/static/page/course/common/ajax-note-list.js")({
+                //    container: $("#noteLoadListData"),
+                //    params: {mid: pageInfo.mid},
+                //    def: {media_id: pageInfo.mid, mediaType: "video"}
+                //}),
+                //wiki: require("/moocvideo/static/page/course/common/ajax-wiki-list.js")({
+                //    container: $("#wikiLoadListData"),
+                //    params: {mid: pageInfo.mid}
+                //})
+            },
             initFun = {
-            qa: function () {
-            }
-        };
+                qa: function () {
+                }
+            };
         exports.tabList = GetListData;
         var initEditor = function () {
             window.editor && window.editor.destroy(), window.editor = UE.getEditor("discuss-editor", {
@@ -189,9 +185,10 @@ define(function (require, exports, module) {
         }), $(".downlist a").click(function () {
             var a = $(this).attr("data-id");
             $.ajax({
-               // url: "/course/ajaxdownloadlog",
+                // url: "/course/ajaxdownloadlog",
                 type: "post",
-                data: {id: a}})
+                data: {id: a}
+            })
         }), $(".js-btn-follow").click(function (e) {
             if (OP_CONFIG.userInfo) {
                 var a, c = $(this);
@@ -222,7 +219,7 @@ define(function (require, exports, module) {
         $(".section-list .question").on("click", function () {
             return isAjax ? void 0 : (isAjax = 1, window.thePlayer && window.thePlayer.getState && "PAUSED" != window.thePlayer.getState() && "IDLE" != window.thePlayer.getState() && thePlayer.pause(), $(".qa-pop").length ? void(isAjax = 0) : void $.ajax({
                 type: "post",
-               // url: "/course/ajaxgetuserquesnum",
+                // url: "/course/ajaxgetuserquesnum",
                 dataType: "json",
                 success: function (a) {
                     isAjax = 0, 1 == a.code ? (window.qapop = $.dialog($("#course-qa-tpl").html(), {
@@ -250,7 +247,7 @@ define(function (require, exports, module) {
         var wenda = function () {
             $.ajax({
                 type: "GET",
-              //  url: "/course/ajaxmaxchaptermediaques",
+                //  url: "/course/ajaxmaxchaptermediaques",
                 data: {mid: pageInfo.mid},
                 dataType: "json",
                 success: function (a) {
@@ -275,7 +272,7 @@ define(function (require, exports, module) {
                 $(a).each(function (g) {
                     $.ajax({
                         type: "GET",
-                      //  url: "/course/" + a[g],
+                        //  url: "/course/" + a[g],
                         data: {cid: course_id},
                         dataType: "json",
                         success: function (a) {
@@ -350,7 +347,7 @@ define(function (require, exports, module) {
         var learnStatus = function () {
             $.ajax({
                 type: "post",
-               // url: "/course/ajaxusermediasstatus?cid=" + course_id,
+                // url: "/course/ajaxusermediasstatus?cid=" + course_id,
                 dataType: "json",
                 success: function (a) {
                     var c, h = [];
@@ -385,7 +382,7 @@ define(function (require, exports, module) {
         }();
         var chaptername = courseName || $(".section-list h3").text(),
             html = "我正在参加@慕课网 的一门课程【" + chaptername + "】,很不错哦！快来一起学习吧！",
-            imgPic =  "";
+            imgPic = "";
         url = course_id ? "http://www.mukewang.com/view/" + course_id : "http://www.imooc.com" + window.location.pathname, window._bd_share_config = {
             common: {
                 bdUrl: url,

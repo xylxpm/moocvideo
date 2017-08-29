@@ -12,21 +12,12 @@ define(function (require) {
     require("/moocvideo/static/page/course/common/jquery.nanoscroller.js");
 
 
-    var h = require("store");
-
-    var v = require("/moocvideo/static/page/course/common/course_detail_common.js");
+    //var h = require("store");
+    //var v = require("/moocvideo/static/page/course/common/course_detail_common.js");
 
     var j = {scrollTo: c()};
 
     $(function () {
-        function c() {
-            if ("number" != typeof continueTime) {
-                continueTime = 0;
-                var a = h.get("_vt");
-                a && a[pageInfo.mid] && (continueTime = a[pageInfo.mid].st || 0)
-            }
-            b(continueTime)
-        }
 
 
         function b(c) {
@@ -53,38 +44,41 @@ define(function (require) {
             })
         }
 
-        function C(a) {
-            "string" == typeof a && (a = $.parseJSON(a)), 0 == a.result ? _.screenShotFlashBack(a) : alert(a.msg || "错误，请稍后重试")
-        }
+        //function C(a) {
+        //    "string" == typeof a && (a = $.parseJSON(a)), 0 == a.result ? _.screenShotFlashBack(a) : alert(a.msg || "错误，请稍后重试")
+        //}
 
 
-        c();
+        b(0)
 
-        $(window).on("beforeunload", function () {
-            function a() {
-                var h, g, i = 0, v = (new Date).getTime();
-                for (h in c)i++, c[h].t < v && (v = c[h].t, g = h);
-                i >= 10 && (delete c[g], a())
-            }
-
-            var c = h.get("_vt") || {}, g = c[pageInfo.mid];
-            if (thePlayer.getCurrentTime)return $(".J_next-box").hasClass("hide") ? void(g ? (g.t = (new Date).getTime(), g.st = thePlayer.getCurrentTime(), h.set("_vt", c)) : (g = {
-                t: (new Date).getTime(),
-                st: thePlayer.getCurrentTime()
-            }, a(), c[pageInfo.mid] = g, h.set("_vt", c))) : (delete c[pageInfo.mid], void h.set("_vt", c))
-        });
-
-        window.screenReceive = C, $.each("qa,note".split(","), function (a, c) {
-            v.remote[c].extendMethod("reset", function () {
-                _.reset(".js-shot-video[data-type='" + c + "']")
-            })
-        });
+        //$(window).on("beforeunload", function () {
+        //    function a() {
+        //        var h, g, i = 0, v = (new Date).getTime();
+        //        for (h in c)i++, c[h].t < v && (v = c[h].t, g = h);
+        //        i >= 10 && (delete c[g], a())
+        //    }
+        //
+        //    var c = h.get("_vt") || {},
+        //        g = c[pageInfo.mid];
+        //    if (thePlayer.getCurrentTime)return $(".J_next-box").hasClass("hide") ? void(g ? (g.t = (new Date).getTime(), g.st = thePlayer.getCurrentTime(), h.set("_vt", c)) : (g = {
+        //        t: (new Date).getTime(),
+        //        st: thePlayer.getCurrentTime()
+        //    }, a(), c[pageInfo.mid] = g, h.set("_vt", c))) : (delete c[pageInfo.mid], void h.set("_vt", c))
+        //});
+        // window.screenReceive = C, $.each("qa,note".split(","), function (a, c) {
+        //v.remote[c].extendMethod("reset", function () {
+        //    _.reset(".js-shot-video[data-type='" + c + "']")
+        //})
+        //});
         var _ = {
             screenShot: function (a) {
                 var c = $(a), h = 0;
                 thePlayer.getCurrentTime && (h = Math.round(thePlayer.getCurrentTime()));
                 var g;
-                g = "", this.el = a, v.remote[c.attr("data-type")].set("video", g), v.remote[c.attr("data-type")].set("picture_time", h)
+                g = "",
+                    this.el = a;
+                //v.remote[c.attr("data-type")].set("video", g),
+                //v.remote[c.attr("data-type")].set("picture_time", h)
             }, formatSecond: function (a) {
                 function c(a) {
                     return 10 > a ? "0" + a : a
@@ -94,7 +88,8 @@ define(function (require) {
                 return h
             }, reset: function (a, c) {
                 var h = $(a);
-                this.el = null, c && v.remote[h.attr("data-type")].reset()
+                this.el = null;
+                //c && v.remote[h.attr("data-type")].reset()
             }, screenShotFlashBack: function () {
                 !this.el
             }
