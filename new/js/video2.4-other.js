@@ -1,5 +1,4 @@
 $(function () {
-    jwplayer.key = 'TS4qsaxnmU61G+MTcWh8YKllWcQ=';
     function a(a) {
         location.href = a
     }
@@ -11,29 +10,31 @@ $(function () {
 
     var j = {scrollTo: c()};
 
-    var createPlayerLisSection = function (videoUrl, imageUrl, width, height, videoDiv) {
-        jwplayer(videoDiv).setup({
-            'width': width,
-            'height': height,
-            'file': videoUrl,
-            'image': imageUrl,
-            'analytics': {
-                'cookies': false,
-                'enabled': false
-            },
-            'primary': "html5",
-            'preload': "none",
-            'androidhls': "true",
-            'abouttext': "Etiantian.com",
-            'aboutlink': "http://www.etiantian.com",
-            'autostart': "false",
-            'startparam': "start"
-        });
 
+    function b(c) {
+        var h = !1;
+        window.thePlayer = mocoplayer($("#video-box"), {
+            url: "http://www.imooc.com/course/playlist/" + pageInfo.mid + "?t=m3u8",
+            title: videoTitle,
+            currentTime: c,
+            events: {
+                onReady: function () {
+                    "html5" == this.getPlayType() && this.play()
+                }, onComplete: function () {
+                    window.clearInterval(w), h = !0, w = null;
+                    var c = $(".J_next-box"), g = c.find(".J-next-course");
+                    if (c.removeClass("hide"), T(), g.length) {
+                        var v = $(".J-next-btn"), y = g.data("next-src");
+                        v.removeClass("hide").on("click", function () {
+                            a(y)
+                        })
+                    }
+                }, onError: function () {
+                }
+            }
+        })
     }
-
-    createPlayerLisSection("http://web.etiantian.com/ett20/hls/hd.m3u8?p=ceyw000026&s=b&t=1504075643&v=be5e5c8511a8d319fd38e90947d35ff1&h=http%3A%2F%2Fhd.etiantian.com", "http://hd.etiantian.net/security/c3a160887a1fd4517435693e8304d60f/59a660ca/etthd/ceyw000026/cover.jpg", "100%", "100%", 'videoDiv');
-
+    b(0)
 
     var a = function () {
         var a = {};
@@ -72,7 +73,7 @@ $(function () {
     $(window).on("resize", function () {
         setTimeout(function () {
             a.resetSize();
-             $(".nano").nanoScroller(j);
+            // $(".nano").nanoScroller(j);
             c.setLT();
             $(window).trigger("scroll")
         }, 200)
