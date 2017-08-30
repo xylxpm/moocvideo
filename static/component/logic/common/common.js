@@ -1,5 +1,10 @@
 define(function (require) {
-
+    require("/moocvideo/static/component/base/util/string"),
+        require("/moocvideo/static/component/logic/common/userinfo.js"),
+        require("/moocvideo/static/component/logic/cart/cart.js");
+    var v = require("/moocvideo/static/component/base/util/cookie.js"),
+        g = require("/moocvideo/static/component/base/suggest/suggest"),
+        j = require("store");
 
         !function () {
             var a, c, h;

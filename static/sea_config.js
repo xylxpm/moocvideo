@@ -18,7 +18,7 @@ seajs.config({
         'tab'        : '/moocvideo/static/component/base/tab/tab',
         'scroll_load': '/moocvideo/static/component/base/scroll_load/scroll_load',
 
-        'common'     : '/moocvideo/static/component/logic/common/common',
+        'common'     : '/moocvideo/static/component/logic/common/common-old',
         'login'      : '/moocvideo/static/component/logic/login/login',
         'login_sns'  : '/moocvideo/static/component/logic/login/login-regist',
         'chat'       : '/moocvideo/static/component/logic/chat/im',

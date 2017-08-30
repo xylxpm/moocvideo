@@ -64,6 +64,7 @@ $(function () {
         }
     };
 
+    function aaa() {
         var a = function () {
                 var a = {};
                 return a.resetSize = function () {
@@ -106,5 +107,7 @@ $(function () {
             var c = $(this);
             c.hasClass("light") ? (c.removeClass("light"), h.animate({right: -360}, 200)) : (c.addClass("light"), h.animate({right: 0}, 200)), a.resetSize()
         })
+    }
 
+    aaa()
 })

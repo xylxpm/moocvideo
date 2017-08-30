@@ -85,13 +85,13 @@ define(function (require) {
             "string" == typeof a && (a = $.parseJSON(a)), 0 == a.result ? _.screenShotFlashBack(a) : alert(a.msg || "错误，请稍后重试")
         }
 
-        if (isLogin) {
-            c();
-            {
-                h.get("isFirstVisit") || "Yes"
-            }
-        }
-
+        //if (isLogin) {
+        //    c();
+        //    {
+        //        h.get("isFirstVisit") || "Yes"
+        //    }
+        //}
+        c();
         $(window).on("beforeunload", function () {
             function a() {
                 var h, g, i = 0, v = (new Date).getTime();

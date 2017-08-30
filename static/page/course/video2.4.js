@@ -12,8 +12,7 @@ define(function (require) {
     require("/moocvideo/static/page/course/common/jquery.nanoscroller.js");
 
 
-    //var h = require("store");
-    //var v = require("/moocvideo/static/page/course/common/course_detail_common.js");
+    var v = require("/moocvideo/static/page/course/common/course_detail_common.js");
 
     var j = {scrollTo: c()};
 
