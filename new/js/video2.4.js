@@ -8,7 +8,6 @@ $(function () {
         return $("[data-id=" + a + "]")
     }
 
-
     var j = {scrollTo: c()};
 
     function b(c) {
@@ -99,7 +98,10 @@ $(function () {
         c.setLT();
         $(window).on("resize", function () {
             setTimeout(function () {
-                a.resetSize(), $(".nano").nanoScroller(j), c.setLT(), $(window).trigger("scroll")
+                a.resetSize();
+               // $(".nano").nanoScroller(j);
+                c.setLT();
+                $(window).trigger("scroll")
             }, 200)
         });
         var h = $(".section-list");
@@ -109,7 +111,7 @@ $(function () {
         })
     }
 
-   // aaa();
+     aaa();
 
 
     $(".section-list .notes").on("click", function () {
