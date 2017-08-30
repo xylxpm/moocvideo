@@ -3,15 +3,15 @@ define(function (require, exports, module) {
         this.name = a, this.data = null
     }
 
-    //require("common");
+    require("common");
     require("/moocvideo/static/lib/layer/1.6.0/layer.min.js");
     require("/moocvideo/static/lib/jquery/plugin/jquery.scrollbar");
-    //require("/moocvideo/static/css/jquery.scrollbar.css");
-    //require("/moocvideo/static/component/base/placeholder/placeholder.js");
-    //require("/moocvideo/static/page/course/common/autocomplete.js");
-    //require("/moocvideo/static/page/course/common/course_note.js");
-    //require("/moocvideo/static/page/course/common/ajax-right-recommend.js");
-    //var wikiSearch = require("/moocvideo/static/page/course/common/wiki-search.js");
+    require("/moocvideo/static/css/jquery.scrollbar.css");
+    require("/moocvideo/static/component/base/placeholder/placeholder.js");
+    require("/moocvideo/static/page/course/common/autocomplete.js");
+    require("/moocvideo/static/page/course/common/course_note.js");
+    require("/moocvideo/static/page/course/common/ajax-right-recommend.js");
+    var wikiSearch = require("/moocvideo/static/page/course/common/wiki-search.js");
     var verifyCode = require("/moocvideo/static/page/common/verify-code.js");
     var store = require("store");
 
@@ -213,7 +213,7 @@ define(function (require, exports, module) {
         }), $(".section-list .notes").on("click", function () {
             window.thePlayer && window.thePlayer.getState && "PAUSED" != window.thePlayer.getState() && "IDLE" != window.thePlayer.getState() && thePlayer.pause(), $(".note-pop").length || (window.notepop = $.dialog($("#course-note-tpl").html(), {title: "笔记"}))
         }), $(".section-list .wiki").on("click", function () {
-            window.thePlayer && window.thePlayer.getState && "PAUSED" != window.thePlayer.getState() && "IDLE" != window.thePlayer.getState() && thePlayer.pause(), $(".wiki-pop").length || (window.wikipop = $.dialog($("#course-wiki-tpl").html(), {title: "搜索WIKI"}))// wikiSearch.init())
+            window.thePlayer && window.thePlayer.getState && "PAUSED" != window.thePlayer.getState() && "IDLE" != window.thePlayer.getState() && thePlayer.pause(), $(".wiki-pop").length || (window.wikipop = $.dialog($("#course-wiki-tpl").html(), {title: "搜索WIKI"}), wikiSearch.init())
         });
         var isAjax = 0;
         $(".section-list .question").on("click", function () {
