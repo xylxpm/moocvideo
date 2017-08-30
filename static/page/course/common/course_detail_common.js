@@ -210,14 +210,20 @@ define(function (require, exports, module) {
         }), $("#noteLoadListData").on("click", ".js-toggle-content", function (e) {
             var a = $(this), c = a.attr("data-state");
             "expanded" === c ? a.text("[ 查看全文 ]").attr("data-state", "collapsed").parent().css({position: "absolute"}).closest(".js-notelist-content").css({maxHeight: "168px"}) : a.text("[ 收起全文 ]").attr("data-state", "expanded").parent().css({position: "static"}).closest(".js-notelist-content").css({maxHeight: "none"}), e.preventDefault()
-        }), $(".section-list .notes").on("click", function () {
+        }),
+
+            $(".section-list .notes").on("click", function () {
             window.thePlayer && window.thePlayer.getState && "PAUSED" != window.thePlayer.getState() && "IDLE" != window.thePlayer.getState() && thePlayer.pause(), $(".note-pop").length || (window.notepop = $.dialog($("#course-note-tpl").html(), {title: "笔记"}))
-        }), $(".section-list .wiki").on("click", function () {
+        }),
+
+            $(".section-list .wiki").on("click", function () {
             window.thePlayer && window.thePlayer.getState && "PAUSED" != window.thePlayer.getState() && "IDLE" != window.thePlayer.getState() && thePlayer.pause(), $(".wiki-pop").length || (window.wikipop = $.dialog($("#course-wiki-tpl").html(), {title: "搜索WIKI"}))// wikiSearch.init())
         });
         var isAjax = 0;
         $(".section-list .question").on("click", function () {
-            return isAjax ? void 0 : (isAjax = 1, window.thePlayer && window.thePlayer.getState && "PAUSED" != window.thePlayer.getState() && "IDLE" != window.thePlayer.getState() && thePlayer.pause(), $(".qa-pop").length ? void(isAjax = 0) : void $.ajax({
+            return isAjax ? void 0 : (isAjax = 1, window.thePlayer && window.thePlayer.getState && "PAUSED" != window.thePlayer.getState() && "IDLE" != window.thePlayer.getState() && thePlayer.pause(),
+
+                $(".qa-pop").length ? void(isAjax = 0) : void $.ajax({
                 type: "post",
                 // url: "/course/ajaxgetuserquesnum",
                 dataType: "json",
@@ -244,6 +250,8 @@ define(function (require, exports, module) {
                 }
             }))
         });
+
+
         var wenda = function () {
             $.ajax({
                 type: "GET",

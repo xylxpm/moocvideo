@@ -10,9 +10,11 @@ define(function (require) {
 
     require("/moocvideo/static/lib/mocoplayer/2.5.2/mocoplayer");
     require("/moocvideo/static/page/course/common/jquery.nanoscroller.js");
+    require("/moocvideo/static/lib/layer/1.6.0/layer.min.js");
+    require("/moocvideo/static/lib/jquery/plugin/jquery.scrollbar");
 
+    //var v = require("/moocvideo/static/page/course/common/course_detail_common.js");
 
-    var v = require("/moocvideo/static/page/course/common/course_detail_common.js");
 
     var j = {scrollTo: c()};
 
@@ -140,5 +142,47 @@ define(function (require) {
         }
 
         aaa()
+
+        $(".section-list .notes").on("click", function () {
+            window.thePlayer && window.thePlayer.getState && "PAUSED" != window.thePlayer.getState() && "IDLE" != window.thePlayer.getState() && thePlayer.pause(), $(".note-pop").length || (window.notepop = $.dialog($("#course-note-tpl").html(), {title: "笔记"}))
+        });
+
+        $(".section-list .wiki").on("click", function () {
+            window.thePlayer && window.thePlayer.getState && "PAUSED" != window.thePlayer.getState() && "IDLE" != window.thePlayer.getState() && thePlayer.pause(), $(".wiki-pop").length || (window.wikipop = $.dialog($("#course-wiki-tpl").html(), {title: "搜索WIKI"}))// wikiSearch.init())
+        });
+
+        var isAjax = 0;
+        $(".section-list .question").on("click", function () {
+            return isAjax ? void 0 : (isAjax = 1, window.thePlayer && window.thePlayer.getState && "PAUSED" != window.thePlayer.getState() && "IDLE" != window.thePlayer.getState() && thePlayer.pause(),
+
+                $(".qa-pop").length ? void(isAjax = 0) : void $.ajax({
+                    type: "post",
+                    // url: "/course/ajaxgetuserquesnum",
+                    dataType: "json",
+                    success: function (a) {
+                        isAjax = 0, 1 == a.code ? (window.qapop = $.dialog($("#course-qa-tpl").html(), {
+                            title: "提问",
+                            callback: function () {
+                                $("#edui_fixedlayer").remove()
+                            }
+                        }), initEditor()) : 2 == a.code ? (window.qapop = $.dialog($("#course-qa-tpl").html(), {
+                            title: "提问",
+                            callback: function () {
+                                $("#edui_fixedlayer").remove()
+                            }
+                        }), initEditor(), $("#interal-use").addClass("interal-checked"), $("#use-credit-tip").show()) : 3 == a.code && ($("#no-credit").css("display", "block"), $(".cancel-cf").on("click", function () {
+                            $("#no-credit").css("display", "none"), window.thePlayer && window.thePlayer.getState && "PAUSED" == window.thePlayer.getState() && thePlayer.play()
+                        }))
+                    },
+                    error: function () {
+                        isAjax = 0, layer.msg("网络错误，请稍后再试", 1, 1)
+                    },
+                    complete: function () {
+                        isAjax = 0
+                    }
+                }))
+        });
+
+
     })
 });
